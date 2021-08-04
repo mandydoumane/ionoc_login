@@ -1,15 +1,12 @@
-import { MandyService } from './../mandy.service';
 import { Component } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 
-
-
 @Component({
-  selector: 'app-home',
-  templateUrl: 'home.page.html',
-  styleUrls: ['home.page.scss'],
+  selector: 'app-login',
+  templateUrl: './login.page.html',
+  styleUrls: ['./login.page.scss'],
 })
-export class HomePage {
+export class LoginPage {
   dataUser = {
     email: '',
     password: ''
@@ -18,11 +15,9 @@ export class HomePage {
  connected: boolean;
  mail: string;
  method: any;
- bonjour: string;
 
   constructor(
-    public afAuth: AngularFireAuth,
-    public mandy: MandyService
+    public afAuth: AngularFireAuth
   ) {
     this.afAuth.authState.subscribe(auth => {
       if (!auth) {
@@ -53,11 +48,7 @@ export class HomePage {
 
   logout() {
       this.afAuth.signOut();
-    };
-
-  test() {
-    this.mandy.bonjour = 'bonjour';
-  }
-  
+    }
 
 }
+
